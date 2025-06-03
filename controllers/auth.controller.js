@@ -85,4 +85,24 @@ export const signIn = async (req, res, next) => {
   }
 }
 
-export const signOut = async (req, res, next) => {}
+export const signOut = async (req, res, next) => {
+  try {
+    // For stateless JWT, sign out is handled on the client by deleting the token.
+    // Optionally, you could implement token blacklisting here in the future.
+    const { email } = req.body;
+    // Check if a user already exists
+    const existingUser = await User.findOne({ email });
+
+    if(!existingUser) {
+      const error = new Error('User does not exist');
+      error.statusCode = 409;
+      throw error;
+    }
+    res.status(200).json({
+      success: true,
+      message: 'User signed out successfully',
+    });
+  } catch (error) {
+    next(error);
+  }
+}
