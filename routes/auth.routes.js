@@ -1,17 +1,14 @@
 import { Router } from 'express';
 
 import { signUp, signIn, signOut } from '../controllers/auth.controller.js';
+import authorize from '../middlewares/auth.middleware.js'
 
 const authRouter = Router();
 
-try {
-    authRouter.post('/sign-up', signUp);
-} catch (error) {
-  console.log("error", error)
-}
+authRouter.post('/sign-up', signUp);
 
 authRouter.post('/sign-in', signIn);
 
-authRouter.post('/sign-out', signOut);
+authRouter.post('/sign-out', authorize, signOut);
 
 export default authRouter;
