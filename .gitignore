@@ -62,3 +62,4 @@ typings/
 
 # ignore envs files
 .env.*.local
+.vercel
