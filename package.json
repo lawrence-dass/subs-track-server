@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
+    "build": "npm install && npm install --save-dev @vercel/node",
     "deploy": "vercel --prod"
   },
   "dependencies": {
