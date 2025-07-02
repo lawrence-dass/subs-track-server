@@ -40,4 +40,3 @@ export default app;
 // 1. Add typescipt
 // 2. Add swagger
 // 3. create frontend
-

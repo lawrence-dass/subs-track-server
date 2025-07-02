@@ -250,8 +250,11 @@ npm run dev          # Start with nodemon (auto-reload)
 # Production
 npm start           # Start production server
 
-# Linting
+# Code Quality
 npm run lint        # Run ESLint checks
+npm run lint:fix    # Run ESLint and auto-fix issues
+npm run format      # Format all code with Prettier
+npm run format:check # Check if code is properly formatted
 ```
 
 ## 🚀 Deployment
