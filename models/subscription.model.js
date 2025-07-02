@@ -26,6 +26,23 @@ const subscriptionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  websiteUrl: {
+    type: String,
+    trim: true,
+    validate: {
+      validator: function(v) {
+        // Allow empty string or valid URL
+        if (!v) return true;
+        try {
+          new URL(v);
+          return true;
+        } catch {
+          return false;
+        }
+      },
+      message: 'Please provide a valid URL'
+    }
+  },
   startDate: {
     type: String,
     required: true,
