@@ -1,6 +1,8 @@
 import { config } from 'dotenv';
 
 /* global process */
+// Try to load standard .env file first, then environment-specific file
+config({ path: '.env' });
 config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
 
 export const {
