@@ -1,6 +1,8 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import fs from 'fs';
+import https from 'https';
 import { PORT, NODE_ENV } from './config/env.js';
 
 import userRouter from './routes/user.routes.js';
@@ -33,6 +35,20 @@ app.listen(PORT, async () => {
   await connectToDatabase();
   console.log(`Subscription Tracker API is running on ${NODE_ENV} at {PORT}`);
 });
+
+// Add HTTPS server on port 443
+try {
+  const httpsOptions = {
+    cert: fs.readFileSync('/etc/ssl/private/substrack/fullchain.pem'),
+    key: fs.readFileSync('/etc/ssl/private/substrack/privkey.pem')
+  };
+  
+  https.createServer(httpsOptions, app).listen(443, () => {
+    console.log('HTTPS server running on port 443');
+  });
+} catch (error) {
+  console.error('Failed to start HTTPS server:', error.message);
+}
 
 export default app;
 
