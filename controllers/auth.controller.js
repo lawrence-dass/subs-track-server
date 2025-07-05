@@ -5,10 +5,9 @@ import jwt from 'jsonwebtoken';
 
 import User from '../models/user.model.js';
 import { JWT_SECRET, JWT_EXPIRES_IN } from '../config/env.js'
-console.log('auth controller')
+
 
 export const signUp = async (req, res, next) => {
-  console.log("signUp 111")
   const session = await mongoose.startSession();
   session.startTransaction();
 
