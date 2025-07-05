@@ -320,7 +320,6 @@ jobs:
 - [ ] **CI/CD Pipeline** - GitHub Actions automated testing and deployment
 - [ ] Add TypeScript support
 - [ ] Swagger API documentation
-- [ ] Frontend application
 - [ ] Email notification system
 - [ ] Subscription analytics
 - [ ] Payment method validation
