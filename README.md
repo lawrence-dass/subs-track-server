@@ -322,7 +322,6 @@ jobs:
 - [ ] Swagger API documentation
 - [ ] Email notification system
 - [ ] Subscription analytics
-- [ ] Payment method validation
 - [ ] Currency conversion support
 - [ ] AWS infrastructure optimization
 - [ ] Automated testing suite
@@ -338,11 +337,3 @@ jobs:
 ## 📄 License
 
 This project is private and proprietary.
-
-## 📞 Support
-
-For support and questions, please contact the development team.
-
----
-
-**Built with ❤️ using Node.js and Express** 
