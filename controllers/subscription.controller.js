@@ -45,7 +45,6 @@ export const createSubscription = async (req, res, next) => {
 };
 
 export const getUserSubscriptions = async (req, res, next) => {
-  console.log('getUserSubscriptions triggered');
   try {
     // Check if the user is the same as the one in the token
     if (req.user.id !== req.params.id) {
@@ -53,9 +52,7 @@ export const getUserSubscriptions = async (req, res, next) => {
       error.status = 401;
       throw error;
     }
-    console.log('req.params.id', req.params.id);
     const subscriptions = await Subscription.find({ user: req.params.id });
-    console.log('subscriptions', subscriptions);
     res.status(200).json({ success: true, data: subscriptions });
   } catch (e) {
     next(e);

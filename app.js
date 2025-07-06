@@ -28,21 +28,20 @@ app.use('/api/v1/workflows', workflowRouter);
 app.use(errorMiddleware);
 
 app.get('/', (req, res) => {
-  res.send('Subs-Tract - Subscription Tracking API');
+  res.send('Substract - a backend for substract client app built with Node.js, Express, and MongoDB');
 });
 
 app.listen(PORT, async () => {
   await connectToDatabase();
-  console.log(`Subscription Tracker API is running on ${NODE_ENV} at {PORT}`);
+  console.log(`Substract API is running on ${NODE_ENV} at ${PORT}`);
 });
 
-// Add HTTPS server on port 443
 try {
   const httpsOptions = {
-    cert: fs.readFileSync('/etc/ssl/private/substrack/fullchain.pem'),
-    key: fs.readFileSync('/etc/ssl/private/substrack/privkey.pem')
+    cert: fs.readFileSync('/home/ec2-user/subs-track/certs/fullchain.pem'),
+    key: fs.readFileSync('/home/ec2-user/subs-track/certs/privkey.pem')
   };
-  
+
   https.createServer(httpsOptions, app).listen(443, () => {
     console.log('HTTPS server running on port 443');
   });
@@ -50,9 +49,10 @@ try {
   console.error('Failed to start HTTPS server:', error.message);
 }
 
+
 export default app;
 
 // Todo:
 // 1. Add typescipt
 // 2. Add swagger
-// 3. create frontend
+// 3. add logging
